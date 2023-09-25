@@ -42,4 +42,4 @@ crabs function: crabs is a kids computer game where a fisherman, captain, hunts 
     Output: none <br>
     Dependencies: drawMap, drawCapt <br>
     Example call: crabs <br>
-    Side effects: none <br>
+    Side effects: draws the map and captain <br>
