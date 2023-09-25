@@ -25,7 +25,7 @@ drawMap function: drawMap ddraws the background for the game using an image, ima
 
 drawLine function: drawLine draws a line between two points, p and q in homogeneous corrdinates <br>
     Input: p, q, color <br>
-    Output: handle <br>
+    Output: graphics handle <br>
     Dependencies: <br>
     Example call: drawLine([5;10;1], [20;30;1], 'k') <br>
     Side effects:  <br>
