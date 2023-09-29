@@ -6,8 +6,8 @@ function crabs ()
 % Draw the game map and initialize map dimensions.
 [mapHeight , mapWidth] = drawMap( "BGImage.png" );
 % Initialize captain location, heading and size
-xCapt = 100;
-yCapt = 400;
+xCapt = 1000;
+yCapt = 1000;
 thetaCapt = -pi/2;
 sizeCapt = 50;
 % Draw the captain and initialize graphics handles

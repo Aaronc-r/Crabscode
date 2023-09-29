@@ -8,9 +8,13 @@ function captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
 % for a captain of dimension sizeCapt. Notice that
 % sizeCapt is a parameter passed into drawCapt.
 capt = getCapt(sizeCapt);
-% shift Captain to new location
+
+% rotate captain
+R = getRotation(thetaCapt);
+captRotated = R*capt;
+% shift captain to new location
 T = getTranslation(xCapt,yCapt);
-capt = T*capt;
+capt = T*captRotated;
 
 % getTranslation has a relation to drawCapt throug it being a translation to where
 % the captian is in relation to the origin 
