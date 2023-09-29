@@ -43,3 +43,11 @@ crabs function: crabs is a kids computer game where a fisherman, captain, hunts 
     Dependencies: drawMap, drawCapt <br>
     Example call: crabs <br>
     Side effects: draws the map and captain <br>
+
+getRotation: matrix will rotate a vector in homogenous game coordinates by an
+angle 𝜃. It rotates clockwise if 𝜃 > 0 and counter clockwise if 𝜃 < 0. <br>
+    Input: theta <br>
+    Output: rotation matrix R <br>
+    Dependencies: drawCaptain <br>
+    Example call: getRotation(pi/2) <br>
+    Side effect: none <br>
