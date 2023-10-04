@@ -15,27 +15,29 @@ sizeCapt = 50;
 % Put your call to drawCapt() here ..... You must give drawCapt its
 % input and output arguments.
 %*******************************************************
-captianGraphics = drawCaptain(xCapt, yCapt, thetaCapt, sizeCapt)
+captGraphics = drawCaptain(xCapt, yCapt, thetaCapt, sizeCapt)
 
 % initial command
-cmd = "null";
-while (cmd != "Q")
-  
-  cmd = kbhit()
-  
-  if( cmd == "w" || cmd == "a" || cmd == "d")
-  % erase old captGraphics
-  for(i=1: length (captainGraphics))
-  set(captGraphics(i), 'Visible','off')
-  endfor
-  % move captain
- captainGraphics = [xCapt,yCapt,thetaCapt] = moveCapt(cmd,x,y,theta)
-  
-  % draw new captain
-  drawCaptain(xCapt, yCapt, thetaCapt, sizeCapt)
-  endif
+cmd = "null"; 
 
-  endwhile
+while ( cmd != "Q") 
+  
+cmd = kbhit(); % Read the keyboard.
+
+if( cmd == "w" || cmd == "a" || cmd == "d" ) %Captain has moved. Respond.
+% erase old captain
+for i=1:length( captGraphics )
+set( captGraphics(i), 'Visible', 'off' );
+endfor
+% move capt
+[xCapt, yCapt, thetaCapt] = moveCapt(cmd, xCapt, yCapt, thetaCapt);
+
+% draw new capt
+captGraphics = drawCaptain( xCapt, yCapt, thetaCapt, sizeCapt);
+
+endif
+endwhile
+
 
 close all
 
