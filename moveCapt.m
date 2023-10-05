@@ -1,23 +1,32 @@
-function [ xCapt, yCapt, thetaCapt ] = moveCapt( cmd, x, y, theta );
-  
+function [ xCapt, yCapt, thetaCapt ] = moveCapt( cmd, x, y, theta , width, height);
+
 dTheta = pi/6;
 dStep = 50;
-if( cmd == "w" ) %move forward
-xCapt = x;
-yCapt = y;
+
+if( cmd == "w" ) % move forward
+xTemp = x + dStep*cos(theta);
+yTemp = y + dStep*sin(theta);
 thetaCapt = theta;
 
-elseif ( cmd == "d" ) %turn right
+if(IsCaptOnMap(xTemp,yTemp,width,height))
+    xCapt = xTemp;
+    yCapt = yTemp;
+  else
+     xCapt = x;
+    yCapt = y;
+    endif
+
+elseif ( cmd == "d" ) % turn right
 xCapt = x;
 yCapt = y;
-thetaCapt = theta;
+thetaCapt = theta + dTheta;
 
-elseif ( cmd == "a" ) %turn left
+elseif ( cmd == "a" ) % turn left
 xCapt = x;
 yCapt = y;
-thetaCapt = theta ;
+thetaCapt = theta - dTheta;
 
-else % if none of the cases are true, set the new variables equal to the old inputs.
+else % if none of the cases are true, set the new variables equal to the old inputs .
 xCapt = x;
 yCapt = y;
 thetaCapt = theta;
