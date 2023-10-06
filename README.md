@@ -51,3 +51,17 @@ angle 𝜃. It rotates clockwise if 𝜃 > 0 and counter clockwise if 𝜃 < 0. 
     Dependencies: drawCaptain <br>
     Example call: getRotation(pi/2) <br>
     Side effect: none <br>
+
+moveCapt: allows the user to move the captain by using keystrokes, w makes the captain move forward, a makes the captain rotate to the left, and d makes the captain rotate to the right <br>
+    Input: cmd, x, y, theta <br>
+    Output: xCapt, yCapt, thetaCapt <br>
+    Dependencies: none <br>
+    Example call: <br>
+    Side effects: <br>
+
+IsCaptOnMap: checks if the captian is "outside" the boundreies of the map and does not allow the captain to swim outside of the map boundries <br>
+    Input: x, y, width, height <br>
+    Output: mapCheck <br>
+    Dependencies: none <br>
+    Example call: <br>
+    Side effects: <br>
