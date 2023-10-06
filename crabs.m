@@ -15,7 +15,7 @@ sizeCapt = 50;
 % Put your call to drawCapt() here ..... You must give drawCapt its
 % input and output arguments.
 %*******************************************************
-captGraphics = drawCaptain(xCapt, yCapt, thetaCapt, sizeCapt)
+captGraphics = drawCaptain(xCapt, yCapt, thetaCapt, sizeCapt);
 
 % initial command
 cmd = "null"; % initial command
