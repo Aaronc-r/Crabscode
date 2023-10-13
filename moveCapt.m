@@ -1,4 +1,4 @@
-function [ xCapt, yCapt, thetaCapt ] = moveCapt( cmd, x, y, theta , width, height);
+function [ xCapt, yCapt, thetaCapt ] = moveCapt( cmd, x, y, theta , width, height)
 
 dTheta = pi/6;
 dStep = 50;
