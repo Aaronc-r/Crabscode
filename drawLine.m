@@ -12,6 +12,6 @@ function  handle = drawLine (p, q, color)
   handle  =  plot(x, y, color);
 
 %set the line width in the current graph
-  set(handle, "LineWidth", 3);
+  set(handle, "LineWidth", 2);
 
 endfunction
