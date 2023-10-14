@@ -1,4 +1,4 @@
-function captainGraphics = drawCapt (xCapt , yCapt , thetaCapt , sizeCapt)
+function captainGraphics = drawCaptain (xCapt , yCapt , thetaCapt , sizeCapt)
 % In the future, this function will draw the captain at the given
 % position (xCapt , yCapt) , with heading thetaCapt.
 % For now, it draws the captain at the (0, 0) with 0 heading.
