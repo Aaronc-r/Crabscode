@@ -1,9 +1,9 @@
 function mapCheck = IsCaptOnMap (x,y,width,height)
 
-if(x>0 && x<width && y>0 && y<height)
-  mapCheck=1;
+if(x>0 && x < width && y > 0 && y < height)
+  mapCheck=true;
 else
-  mapCheck=0;
+  mapCheck=false;
 endif
 
 endfunction
