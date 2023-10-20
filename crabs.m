@@ -1,4 +1,4 @@
-function crabs ()
+function crabs (level)
 %initialize command and map dimensions and draw map
 
 [mapHeight,mapWidth] = drawMap("BGImage.png");
@@ -12,14 +12,36 @@ xCrab = 1000;
 yCrab = 1200;
 thetaCrab = -pi/2;
 sizeCrab = 50;
+
+% initialize Jelly fish
+ xJelly =  rand*mapWidth;
+ yJelly =  0;
+ thetaJelly = -pi/2;
+ sizeJelly = 25;
+
+ 
 %draw initial captain and crab
 captainGraphics = drawCaptain(xCapt,yCapt,thetaCapt,sizeCapt);
 crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
+jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly, sizeJelly);
 %%%%% main loop %%%%%%%%%%
-cmd = "null";
-while ( cmd != "Q") % while not quit read keyboard and respond
-%read the keyboard.
-cmd = kbhit();
+
+while (1) % start game loop
+  % erase 
+  for i=1: length(jellyGraphics)
+    delete(jellyGraphics(i))
+  endfor
+% moveJelly
+ [xJelly,yJelly,thetaJelly] = moveJelly(level,xJelly,yJelly,thetaJelly, sizeJelly, mapHeight, mapWidth);
+
+% draw Jelly
+ jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly, sizeJelly);
+
+cmd = kbhit(1);
+if(cmd == "Q")
+   break
+endif 
+   
 if( cmd == "w" || cmd == "a" || cmd == "d" ) %respond to keyboard. captain has moved
 %erase old captain
 for i=1:length(captainGraphics)
@@ -41,6 +63,8 @@ endfor
 %draw new captain and crab
 crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
 endif
+fflush(stdout);
+pause(.01);
 endwhile
 close all
 clear
