@@ -1,5 +1,5 @@
 function jellyGraphics = drawJelly (x, y, theta, size)
-jelly = getJellyfish(size);
+jelly = getJelly(size);
 
 %rotate
 R = getRotation(theta);
