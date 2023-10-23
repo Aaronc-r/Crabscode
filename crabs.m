@@ -19,11 +19,16 @@ sizeCrab = 50;
  thetaJelly = -pi/2;
  sizeJelly = 25;
 
+% initialize bubble 
+%xCircle = rand*mapWidth;
+%yCircle = mapHeight;
+%radius = 10;
  
 %draw initial captain and crab
 captainGraphics = drawCaptain(xCapt,yCapt,thetaCapt,sizeCapt);
 crabGraphics = drawCrab(xCrab,yCrab,thetaCrab,sizeCrab);
 jellyGraphics = drawJelly(xJelly,yJelly,thetaJelly, sizeJelly);
+%cricleGraphics = drawCircle (xCircle, yCircle, radius, mapHeight, mapWidth);
 %%%%% main loop %%%%%%%%%%
 
 while (1) % start game loop
