@@ -34,6 +34,7 @@ pt22=jelly(:,22);
 pt23=jelly(:,23);
 pt24=jelly(:,24);
 
+
 %right sise
 jellyGraphics(1)=drawLine (pt1, pt2, 'b'); 
 jellyGraphics(2)=drawLine (pt2, pt3, 'b');

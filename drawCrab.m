@@ -10,8 +10,8 @@ function crabGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab)
   R = getRotation(thetaCrab);
   crabRotated = R*crab;
   % shift crab to new location
-  S = getTranslation(xCrab,yCrab);
-  crab = S*crabRotated;
+  T = getTranslation(xCrab,yCrab);
+  crab = T*crabRotated;
 
   % get crab points
    Pt1=crab(:,1);
@@ -35,38 +35,39 @@ function crabGraphics = drawCrab (xCrab,yCrab,thetaCrab,sizeCrab)
    Pt19=crab(:,19);
    Pt20=crab(:,20);
 
+
   % Right Leg
-  crabGraphics(1) = drawLine( Pt1, Pt2,"r");
+  crabGraphics(1) = drawLine( Pt1, Pt2, 'r');
 
   % Left Leg
-  crabGraphics(2) = drawLine( Pt3, Pt4,"r");
+  crabGraphics(2) = drawLine( Pt3, Pt4, 'r');
 
   % left Body with arm
-  crabGraphics(3) = drawLine( Pt5, Pt6,"r");
-  crabGraphics(4) = drawLine( Pt6, Pt7,"r");
-  crabGraphics(5) = drawLine( Pt7, Pt8,"r");
+  crabGraphics(3) = drawLine( Pt5, Pt6, 'r');
+  crabGraphics(4) = drawLine( Pt6, Pt7, 'r');
+  crabGraphics(5) = drawLine( Pt7, Pt8, 'r');
 
   % Right body with arm
-  crabGraphics(6) = drawLine( Pt9, Pt10,"r");
-  crabGraphics(7) = drawLine( Pt10, Pt11,"r");
-  crabGraphics(8) = drawLine( Pt11, Pt12,"r");
+  crabGraphics(6) = drawLine( Pt9, Pt10, 'r');
+  crabGraphics(7) = drawLine( Pt10, Pt11, 'r');
+  crabGraphics(8) = drawLine( Pt11, Pt12, 'r');
 
   % Body upper and lower connections
-  crabGraphics(9) = drawLine( Pt5, Pt9,"r");
-  crabGraphics(10) = drawLine( Pt6, Pt10,"r");
+  crabGraphics(9) = drawLine( Pt5, Pt9, 'r');
+  crabGraphics(10) = drawLine( Pt6, Pt10, 'r');
 
   % Right Eye
-  crabGraphics(11) = drawLine( Pt13, Pt14,"r");
+  crabGraphics(11) = drawLine( Pt13, Pt14, 'r');
 
   % Left Eye
-  crabGraphics(12) = drawLine( Pt15, Pt16,"r");
+  crabGraphics(12) = drawLine( Pt15, Pt16, 'r');
 
   % Right Claw
-  crabGraphics(13) = drawLine( Pt8, Pt17,"r");
-  crabGraphics(14) = drawLine( Pt8, Pt18,"r");
+  crabGraphics(13) = drawLine( Pt8, Pt17, 'r');
+  crabGraphics(14) = drawLine( Pt8, Pt18, 'r');
 
   % Left Claw
-  crabGraphics(15) = drawLine( Pt12, Pt19,"r");
-  crabGraphics(16) = drawLine( Pt12, Pt20,"r");
+  crabGraphics(15) = drawLine( Pt12, Pt19, 'r');
+  crabGraphics(16) = drawLine( Pt12, Pt20, 'r');
 
 endfunction
