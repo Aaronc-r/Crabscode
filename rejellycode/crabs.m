@@ -12,7 +12,7 @@ while (playAgain == 1)
   [mapHeight , mapWidth] = drawMap( "BGImage.png" );
 if (level == 'Q')
   break
-elseif(level <=5)
+else if(level <=5)
 
 % Initialize captain location, heading and size
 xCapt = 1000;
@@ -24,7 +24,7 @@ timeDuration = 150 - (30 * (level - 1));
 [captGraphics, netNodeX, netNodeY, captNodeX, captNodeY, headNodeX, headNodeY] = drawCapt (xCapt, yCapt, thetaCapt, sizeCapt);
 
 % initialize Jellyfish
-numJelly = level
+numJelly = level;
 xJelly = rand(1, numJelly) * mapWidth;
 yJelly = rand(1, numJelly) * mapHeight;
 thetaJelly = ones(1, numJelly) * (-pi/2);
@@ -45,7 +45,6 @@ sizeHeart = 60;
 thetaHeart = -pi/2;
 heartCounter = 1;
 heartOnScreen = false;
-
 % initialize Crabs
 numCrabs = level;
 crabStep = 30;
@@ -61,32 +60,31 @@ for (j=1: numCrabs)
 endfor
 ptCounter = 0;
 health = 100;
+
 % text
 pointText = text(mapWidth/2, -20, strcat('Points: ', num2str(ptCounter)), 'FontSize', 30, 'Color', 'red');
 healthText = text(50, -20, strcat('Health: ', num2str(health)), 'FontSize', 30, 'Color', 'red');
 
-
-
-else
+elseif(level >=6)
 
 % Initialize captain location, heading and size
 xCapt = 1000;
 yCapt = 900;
 thetaCapt = pi/6;
 sizeCapt = 50;
-timeDuration = 300 - (30 * (level - 1));
+timeDuration = 1000;
 
 [captGraphics, netNodeX, netNodeY, captNodeX, captNodeY, headNodeX, headNodeY] = drawCapt (xCapt, yCapt, thetaCapt, sizeCapt);
 
 % initialize Shark
 ## xShark = 3/4 * mapWidth;
 ## yShark = 1/2 * mapHeight;
-xShark = 50;
-yShark = 50;
-sharkMove = -60*(0.5*(level-5));
+xShark = 0;
+yShark = 0;
+sharkMove = -40;
 thetaShark = 0;
 sizeShark = 150;
-sharkDamage = 25 * (level - 5);
+sharkDamage = 6*level;
   [sharkGraphics, xSharkNode, ySharkNode] = drawShark(xShark, yShark, thetaShark, sizeShark);
 
   % initialize Bubble
@@ -102,8 +100,8 @@ heartCounter = 1;
 heartOnScreen = false;
 
 % initialize Crabs
-crabStep = 30;
 numCrabs = level;
+crabStep = 30;
 xCrab = rand(1, numCrabs) * mapWidth;
 yCrab = 3*mapHeight/4 + rand(1, numCrabs)*mapHeight/4;
 thetaCrab = ones(1, numCrabs) * (-pi/2);
@@ -121,11 +119,9 @@ health = 100;
 pointText = text(mapWidth/2, -20, strcat('Points: ', num2str(ptCounter)), 'FontSize', 30, 'Color', 'red');
 healthText = text(50, -20, strcat('Health: ', num2str(health)), 'FontSize', 30, 'Color', 'red');
 
-
 endif
 while (1) % While not quit, read keyboard and respond
   commandwindow();
-  cmd = kbhit(1); % Read the keyboard .
   set (pointText, 'Visible', 'on');
   set (healthText, 'Visible', 'on');
 
@@ -176,7 +172,12 @@ if(headDistFromHeart < (0.5*sizeCapt+2*sizeHeart))
 endif
 endif
 
-if (cmd == "w" || cmd == "a" || cmd == "d" || cmd == "s") % Captain has moved . Respond .
+cmd = kbhit(1); % Read the keyboard .
+  if(cmd == 'Q')
+  break;
+  endif
+
+  if (cmd == "w" || cmd == "a" || cmd == "d" || cmd == "s") % Captain has moved . Respond .
 
    % erase old captain
   for(i=1:length(captGraphics))
@@ -192,7 +193,7 @@ endif
 
   % removes crab and gives that crab a new location
   for (k=1: numCrabs)
-    if (isCrabCaught(k) == 0 && getDist(netNodeX, netNodeY, xCrab(k), yCrab(k)) < 5 * sizeCapt)
+    if (isCrabCaught(k) == 0)
       % erase old crab
       for(j=1:length(crabGraphics(:,k)))
         delete(crabGraphics(j,k));
@@ -207,7 +208,7 @@ endif
     endif
 
   dist = getDist(netNodeX, netNodeY, xCrabNode(k), yCrabNode(k));
- if (isCrabCaught(k) == 0 && dist < 1.5*sizeCapt + 1.5*sizeCrab)
+ if (isCrabCaught(k) == 0 && dist < 1.5*sizeCapt + sizeCrab/2)
    isCrabCaught(k) = 1;
    ptCounter = sum(isCrabCaught);
      for(i=1:length(crabGraphics(:,k)))
@@ -226,6 +227,7 @@ endfor
 
  % draw bubble
  [bubbleGraphics, xBubbleCenter, yBubbleCenter] = drawBubble (xBubble,yBubble,sizeBubble);
+ 
  headDistFromBubble = sqrt((xBubbleCenter - headNodeX)^2 + (yBubbleCenter - headNodeY)^2);
 if (headDistFromBubble < 0.5*sizeCapt + 3*sizeBubble)
   timeDuration = 300 - (30 * (level - 1));
@@ -273,15 +275,11 @@ for(s=1:length(sharkGraphics))
 endfor
 
 % move shark
-[xShark, yShark, thetaShark] = sharkTracking(xCapt, yCapt, xShark, yShark, sharkMove, sharkDistFromCapt, thetaCapt, mapWidth, mapHeight);
+[xShark, yShark, thetaShark, sharkMove] = sharkTracking(xCapt, yCapt, xShark, yShark, sharkMove, sharkDistFromCapt, thetaCapt);
 
 % draw shark
 [sharkGraphics, xSharkNode, ySharkNode] = drawShark(xShark,yShark,thetaShark,sizeShark);
 endif
-
-  if(cmd == 'Q')
-  break;
-  endif
 
   fflush(stdout);
 pause(.01)
